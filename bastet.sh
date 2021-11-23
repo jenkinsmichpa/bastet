@@ -7,6 +7,8 @@ localNetwork='10.51.<GROUP NUMBER HERE>.0/24'
 netcatProtocol='tcp'
 netcatPort='9999'
 
+faces=('ฅ(=ዎܫዎ=)∫' 'ฅ^•ﻌ•^ฅ.' '(=ᓀᆽᓂ=)' 'ฅ ( ◕ ﻌ ◕ )')
+
 touch -a bastet.log
 touch -a bastet.err
 touch -a bastet.res
@@ -23,7 +25,10 @@ for file in $packetSource; do
   if [[ $badKitties =~ $netcatPort ]]; then
     echo pawsitive "$file" complete >> bastet.res
     echo "$badKitties" >> bastet.log
-    echo "Mwow? Netcat reverse shell activity detected in ${file}! ฅ(=ዎܫዎ=)∫" | $discbinBastet
+    
+    rand=$(( RANDOM % 4 ))
+    echo "Mwow? Netcat reverse shell activity detected in ${file}!" "${faces[$rand]}" | $discbinBastet
+    
     echo "$badKitties" | $discbinBastet
   else
     echo nyagative "$file" complete >> bastet.res
@@ -32,4 +37,4 @@ for file in $packetSource; do
 done
 
 sed -i '/incomplete/d' bastet.res
-sed -i 's/\(.*\)complete/\1incomplete/' bastet.res
+sed -i '$s/complete/incomplete/' bastet.res
