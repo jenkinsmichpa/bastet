@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Bastet, a netcat activity detector for CNIT 470
 # by jenkinsmichpa inspired by theif-adj / aeris salus / cardea scripts
 
